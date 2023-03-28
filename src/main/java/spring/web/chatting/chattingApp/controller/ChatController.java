@@ -25,6 +25,6 @@ public class ChatController {
     @GetMapping
     public List<ChatRoom> findAllRooms() {
         return chatService.findAllRoom();
-        // 이부분이 충돌나써 ㅠㅠ 충돌..
+        // 이부분이 충돌나써 ㅠㅠ 충돌..22
     }
 }
