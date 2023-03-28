@@ -19,13 +19,11 @@ public class ChatController {
 
     @PostMapping
     public ChatRoom createRoom(@RequestParam String name){
-        ChatRoom room = chatService.createRoom(name);
-        return room;
+        return chatService.createRoom(name);
     }
 
     @GetMapping
     public List<ChatRoom> findAllRooms(){
-        List<ChatRoom> allRoom = chatService.findAllRoom();
-        return allRoom;
+        return chatService.findAllRoom();
     }
 }
