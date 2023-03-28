@@ -9,6 +9,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 import spring.web.chatting.chattingApp.dto.ChatDTO;
+import spring.web.chatting.chattingApp.dto.ChatRoom;
 import spring.web.chatting.chattingApp.service.ChatService;
 
 @Slf4j
@@ -32,7 +33,10 @@ public class WebSocketChatHandler extends TextWebSocketHandler {
         ChatDTO chatMessage = objectMapper.readValue(payload, ChatDTO.class);
         log.info("session {} ::: ",chatMessage.toString());
 
+        ChatRoom room = chatService.findRoomById(chatMessage.getRoomId());
+        log.info("room {}", room.toString());
 
+        room.handleAction(session, chatMessage, chatService);
 
     }
 }
